@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in 2D GRAPHICS problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Geoffrey Tomlinson.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -88,19 +88,30 @@ def hourglass(window, n, point, radius, color):
     where n and radius are positive and color is a string that denotes
     a color that rosegraphics understands.
     """
-    # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
-    #       We provided some tests for you (above).
-    # ------------------------------------------------------------------
-    ####################################################################
-    # BONUS: Avoid replicated code if you can.  Hint: You are allowed
-    #        to define an additional function(s) if you wish.
-    ####################################################################
-    # ------------------------------------------------------------------
-    # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
-    #    DIFFICULTY:      8
-    #    TIME ESTIMATE:  25 minutes (warning: this problem is challenging)
-    # ------------------------------------------------------------------
+
+    center = point
+    for j in range(n):
+        for k in range(j):
+            circle = rg.Circle(center, radius)
+            circle.attach_to(window)
+            window.render()
+            center.x += radius * 2
+        center.y += radius * 2
+        center.x -= radius * 2 * j
+
+        # ------------------------------------------------------------------
+        # TODO: 2. Implement and test this function.
+        #       We provided some tests for you (above).
+        # ------------------------------------------------------------------
+        ####################################################################
+        # BONUS: Avoid replicated code if you can.  Hint: You are allowed
+        #        to define an additional function(s) if you wish.
+        ####################################################################
+        # ------------------------------------------------------------------
+        # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
+        #    DIFFICULTY:      8
+        #    TIME ESTIMATE:  25 minutes (warning: this problem is challenging)
+        # ------------------------------------------------------------------
 
 
 def run_test_many_hourglasses():
